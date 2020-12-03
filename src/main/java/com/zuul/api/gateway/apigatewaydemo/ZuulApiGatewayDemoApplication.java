@@ -9,27 +9,12 @@ import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.web.client.RestTemplate;
 
+
 @SpringBootApplication
 public class ZuulApiGatewayDemoApplication {
-
-    private static final Logger log = LoggerFactory.getLogger(ConsumingRestApplication.class);
 
     public static void main(String[] args) {
 
         SpringApplication.run(ZuulApiGatewayDemoApplication.class, args);
     }
-    @Bean
-    public RestTemplate restTemplate(RestTemplateBuilder builder) {
-        return builder.build();
-    }
-
-    @Bean
-    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-        return args -> {
-            News news = restTemplate.getForObject(
-                    "https://gturnquist-quoters.cfapps.io/api/random", News.class);
-            log.info(news.toString());
-        };
-    }
-
 }
