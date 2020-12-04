@@ -19,4 +19,5 @@ public class GatewayController {
     public String searchFor(@PathVariable String keyword){
         return service.searchFor(keyword);
     }
+
 }
